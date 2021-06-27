@@ -1,0 +1,67 @@
+
+body{
+  background-image: url(../images/basic.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.login-container{
+    width: 50%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin: auto;
+
+}
+label,
+  input,select{
+    display: block;
+    width: 100%;
+  }
+  label {
+    margin-bottom: 5px;
+    height: 22px;
+  }
+
+input,select {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid rgb(190, 185, 185);
+  }
+
+input.error {
+    border-color: red;
+}
+
+.input-feedback {
+    color: rgb(235, 54, 54);
+    margin-top: -15px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.input-group-append{
+   width: 5%;
+   padding-bottom: 20px;
+}
+@media(max-width:900px){
+  .login-container{
+    width: 90%;
+
+}
+}
+@media(max-width:500px){
+    
+.login-container{
+    width: 90%;
+
+}
+    .input-group{
+        width: 85%;
+    }
+    .input-group-append{
+        padding-bottom: 20px;
+        padding-left: 0px;
+     }
+}
