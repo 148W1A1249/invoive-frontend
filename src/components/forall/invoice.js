@@ -66,7 +66,7 @@ function Invoice(props){
     const renderInvoice = async ()=>{
         //See documentation for all data properties
         document.getElementById("pdf").innerHTML = "loading...";
-        const data = {}; 
+        // const data = {}; 
         setTimeout(()=>{
             document.getElementById("pdf").innerHTML = "Unable to Fetch Data...";
         },1000)

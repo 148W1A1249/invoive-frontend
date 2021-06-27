@@ -66,9 +66,9 @@ function Operation(props){
     {
         (()=>{
             if(props.client==="EP"){
-                return <h>Employee</h>
+                return <span>Employee</span>
             }else{
-                return <h>{props.client}</h>
+                return <span>{props.client}</span>
             }
         })()
     }
