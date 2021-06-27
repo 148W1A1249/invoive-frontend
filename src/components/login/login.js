@@ -12,7 +12,9 @@ function LoginPage(){
     toast.configure();
     let history = useHistory();
     return<>
+   
     <div className="login-container mt-4 mb-3">
+   
     <h1 className="text-center">login page</h1>
     <hr/>
     <Formik
@@ -112,9 +114,21 @@ function LoginPage(){
         }}
     </Formik>
     <hr/>
-    <p>forgot password</p>
+    {/* <p>forgot password</p>
     <p>sign up</p>
+    <hr/> */}
+    <div class="alert alert-primary" role="alert" style={{width:"100%"}}>
+        <span><b>Admin: </b> admin@gmail.com</span><br/>
+        <span> <b>password: </b>admin001</span>
+        <hr/>
+        <span><b>Manager: </b>manager@gmail.com</span><br/>
+        <span><b>password: </b>manager001</span>
+        <hr/>
+        <span><b>Employe: </b>employe@gmail.com</span><br/>
+        <span><b>password: </b>employe001</span>
     </div>
+    </div>
+   
     </>;
 }
 export default LoginPage;

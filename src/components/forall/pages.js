@@ -2,6 +2,7 @@ import React from 'react';
 //create imports
 import ManagerCreatePage from './mangerCreate';
 import PerminentEmployeeCreatePage from './employePcreate';
+import TemporaryEmployeeCreatePage from './employeTcreate';
 import UserCreatePage from './userCreate';
 // update imports
 import ManagerUpdatePage from './managerUpdate';
@@ -23,7 +24,7 @@ function Pages(props){
                 else if(props.operation==="create"){
                     if(props.position ==="Manager"){return <> <ManagerCreatePage/></>}
                     else if(props.position ==="EP"){return <> <PerminentEmployeeCreatePage/></>}
-                    else if(props.position ==="ENP"){return <> ENP create page</>}
+                    else if(props.position ==="ENP"){return <><TemporaryEmployeeCreatePage/></>}
                     else if(props.position ==="student"){return <> <UserCreatePage/></>}
                 }
                 else if(props.operation==="update"){

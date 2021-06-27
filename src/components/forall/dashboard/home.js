@@ -1,4 +1,4 @@
-import Errorpage from '../../assets/images/404_page_cover.jpg'
+
 function Home(props){
     // console.log(props)
     return<>

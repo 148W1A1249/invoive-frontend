@@ -1,13 +1,14 @@
 import React,{ useState } from "react";
 import {InvoiceData} from '../../helpers/controllers';
 import easyinvoice from 'easyinvoice';
+import Modal from 'react-bootstrap/Modal';
 
 function Invoice(props){
+    const [show, setShow] = useState(false);
     const [invoice ,setInvoice] = useState([]);  
     const invoicFun = ()=>{
         InvoiceData({category:props.data})
         .then(res=>{
-            console.log(res);
             setInvoice([res.data.user]);  
         })
         .catch((error) => console.log(error)) 
@@ -66,8 +67,11 @@ function Invoice(props){
         //See documentation for all data properties
         document.getElementById("pdf").innerHTML = "loading...";
         const data = {}; 
-        const result = await easyinvoice.createInvoice(data);      
-        easyinvoice.render('pdf', result.pdf);
+        setTimeout(()=>{
+            document.getElementById("pdf").innerHTML = "Unable to Fetch Data...";
+        },1000)
+        // const result = await easyinvoice.createInvoice(data);      
+        // easyinvoice.render('pdf', result.pdf);
     }
      
     
@@ -89,36 +93,56 @@ function Invoice(props){
 
             <div className="table-responsive">
             <table>
-                        <tr>
+                <thead>
+                    <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Invoice</th>
-                        </tr>
-                        {
-                            invoice.map(obj=>{
-                            let out = obj.map(objlist=>{
-                                    return <>
-                                    <tr>
-                                        <td>{objlist.firstName}</td>
-                                        <td>{objlist.lastName}</td>
-                                        <td>{objlist.email}</td>
-                                        <td>{objlist.mobile}</td>
-                                        <td>
-                                            <button type="button" className="btn bg-info m-2" onClick={()=>{downloadInvoice({objlist})}}><i class="fas fa-file-download"></i> </button>
-                                            <button type="button" className="btn bg-info m-2"> <i class="fas fa-eye"></i></button>
-                                        </td>
-                                    </tr>
-                                    </>
-                                })
-                                return out;
-                            })                               
-                        }
-                        
-                        
-                    </table>
-                 </div>
+                     </tr>
+                </thead>
+                <tbody>
+                    {
+                        invoice.map(obj=>{
+                        let out = obj.map(objlist=>{
+                                return <>
+                                <tr>
+                                    <td>{objlist.firstName}</td>
+                                    <td>{objlist.lastName}</td>
+                                    <td>{objlist.email}</td>
+                                    <td>{objlist.mobile}</td>
+                                    <td>
+                                        <button type="button" className="btn bg-info m-2" onClick={()=>{downloadInvoice({objlist})}}><i className="fas fa-file-download"></i> </button>
+                                        <button type="button" className="btn bg-info m-2" onClick={() => setShow(true)}> <i className="fas fa-eye"></i></button>
+                                    </td>
+                                </tr>
+                                </>
+                            })
+                            return out;
+                        })                               
+                    }
+                </tbody>  
+             </table>
+            </div>
+            <Modal
+            show={show}
+            onHide={() => setShow(false)}
+            dialogClassName="modal-90w"
+            aria-labelledby="example-custom-modal-styling-title"
+        >
+            <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+              Check Invoice
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <div className="text-right mb-3">
+                <button type="button" className="btn btn-danger mb-3" onClick={renderInvoice}><b>Refresh</b> <i className="fas fa-redo-alt"></i></button>
+            </div>
+            <div id="pdf"></div>
+            </Modal.Body>
+        </Modal>
                  
         </div>
     </>;
