@@ -3,13 +3,13 @@ import {Formik} from 'formik';
 import * as Yup from "yup";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import {createManager} from '../../helpers/controllers';
+// import {creatTemporaryEmployeee} from '../../helpers/controllers';
 
-function ManagerUpdatePage(){
+function TemporaryEmployeeUpdatePage(){
     toast.configure();
     return<>
         <div className="container p-md-5 ">
-            <h3 className="text-center">Update Manager Form</h3>
+            <h3 className="text-center">Update Temporary Employee Form</h3>
             <hr/>
             <Formik
             initialValues={{fname:"",lname:"",email:"",password:"",mobile:"",address:"",state:"",pincode:"",country:"",salary:"",dateOfJoining:""}}
@@ -17,19 +17,19 @@ function ManagerUpdatePage(){
                 setTimeout(()=>{
                     // const [firstName,lastName,email,password,mobile,address,state,pincode,country,salary,dateOfJoining]= [values.fname,values.lname,values.email,values.password,values.mobile,values.address,values.state,values.pincode,values.country,values.salary,values.dateOfJoining];
                     // const personName = fname+ " "+lname
-                    // const category = "Manager";
+                    // const category = "ENP";
                     // const data = {category,firstName,lastName,email,password,mobile,address,state,pincode,country,salary,dateOfJoining}
-                    // createManager(data)
+                    // creatTemporaryEmployeee(data)
                     // .then(res=>{
                     //     if(res.data.type ==="success"){
                     //         toast.success(res.data.message); 
                     //     }else{
                     //         toast.error(res.data.message);
-                    //     }                          
+                    //     } 
                     //     resetForm();
-                    //     setSubmitting(false);                        
+                    //     setSubmitting(false);                         
                     // })
-                    // .catch((error) => console.log(error)) 
+                    // .catch((error) => console.log(error))  
                         alert("your data is Updated....") 
                         resetForm();
                         setSubmitting(false);
@@ -133,4 +133,4 @@ function ManagerUpdatePage(){
     </>;
 }
 
-export default ManagerUpdatePage;
+export default TemporaryEmployeeUpdatePage;

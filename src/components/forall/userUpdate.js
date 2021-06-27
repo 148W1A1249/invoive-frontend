@@ -3,37 +3,38 @@ import {Formik} from 'formik';
 import * as Yup from "yup";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import {createManager} from '../../helpers/controllers';
+// import {createStudent} from '../../helpers/controllers';
 
-function ManagerUpdatePage(){
+function UserUpdatePage(){
     toast.configure();
     return<>
         <div className="container p-md-5 ">
-            <h3 className="text-center">Update Manager Form</h3>
+            <h3 className="text-center">Student info Update Form</h3>
             <hr/>
             <Formik
-            initialValues={{fname:"",lname:"",email:"",password:"",mobile:"",address:"",state:"",pincode:"",country:"",salary:"",dateOfJoining:""}}
+            initialValues={{fname:"",lname:"",email:"",password:"",mobile:"",address:"",state:"",pincode:"",country:"",fees:"",paid:"",dateOfJoining:""}}
             onSubmit={(values,{setSubmitting,resetForm})=>{
                 setTimeout(()=>{
-                    // const [firstName,lastName,email,password,mobile,address,state,pincode,country,salary,dateOfJoining]= [values.fname,values.lname,values.email,values.password,values.mobile,values.address,values.state,values.pincode,values.country,values.salary,values.dateOfJoining];
+                    // const [firstName,lastName,email,password,mobile,address,state,pincode,country,fees,paid,dateOfJoining]= [values.fname,values.lname,values.email,values.password,values.mobile,values.address,values.state,values.pincode,values.country,values.fees,values.paid,values.dateOfJoining];
                     // const personName = fname+ " "+lname
-                    // const category = "Manager";
-                    // const data = {category,firstName,lastName,email,password,mobile,address,state,pincode,country,salary,dateOfJoining}
-                    // createManager(data)
-                    // .then(res=>{
-                    //     if(res.data.type ==="success"){
-                    //         toast.success(res.data.message); 
-                    //     }else{
-                    //         toast.error(res.data.message);
-                    //     }                          
-                    //     resetForm();
-                    //     setSubmitting(false);                        
-                    // })
-                    // .catch((error) => console.log(error)) 
+                    // const category = "student";
+                    // const data = {category,firstName,lastName,email,password,mobile,address,state,pincode,country,fees,paid,dateOfJoining}
+                //     createStudent(data)
+                //     .then(res=>{
+                //         if(res.data.type ==="success"){
+                //             toast.success(res.data.message); 
+                //         }else{
+                //             toast.error(res.data.message);
+                //         }                          
+                //         resetForm();
+                //         setSubmitting(false);                        
+                //     })
+                //     .catch((error) => console.log(error))    
                         alert("your data is Updated....") 
                         resetForm();
-                        setSubmitting(false);
+                        setSubmitting(false);              
                 },500);
+               
             }}
             validationSchema = {Yup.object().shape({
                 email: Yup.string()
@@ -47,9 +48,12 @@ function ManagerUpdatePage(){
                 .required("Required")
                 .min(10, "You missed some digits")
                 .matches(/([0-9])/, 'Phone number is not valid'),
-                salary:Yup.number()
+                fees:Yup.number()
                 .required("Required")
-                .typeError('you must specify a number')
+                .typeError('you must specify a number'),
+                paid:Yup.string()
+                .ensure()
+                .required("Required"),
             })}
             >
                 {(props) =>{
@@ -111,11 +115,25 @@ function ManagerUpdatePage(){
                                     <input type="date" name="dateOfJoining" value={values.dateOfJoining} onChange={handleChange} placeholder="date" className="" />
                                 </div>
                                 <div className='col-md-12'>
-                                    <label htmlFor="salary">Salary</label>
-                                    <input type="number" name="salary" value={values.salary} onChange={handleChange} placeholder="Salary" className={errors.salary && touched.salary && "error"} />
+                                    <label htmlFor="fees">Fees</label>
+                                    <input type="number" name="fees" value={values.fees} onChange={handleChange} placeholder="Enter student Fees" className={errors.fees && touched.fees && "error"} />
                                     {
-                                        errors.salary && touched.salary &&  (
-                                            <div className="input-feedback">{errors.salary}</div>
+                                        errors.fees && touched.fees &&  (
+                                            <div className="input-feedback">{errors.fees}</div>
+                                        )
+                                    }
+                                </div>
+                                <div className='col-md-12'>
+                                    <label htmlFor="paid">Paid Info</label>
+                                    <select name="paid" value={values.paid} onChange={handleChange} className={errors.paid && touched.paid && "error"}>
+                                        <option>--select fees paid--</option>
+                                        <option value="full">Full Paid</option>
+                                        <option value="half">Half Paid</option>
+                                        <option value="OT">One Third Paid</option>
+                                    </select>
+                                    {
+                                        errors.paid && touched.paid &&  (
+                                            <div className="input-feedback">{errors.paid}</div>
                                         )
                                     }
                                 </div>
@@ -133,4 +151,4 @@ function ManagerUpdatePage(){
     </>;
 }
 
-export default ManagerUpdatePage;
+export default UserUpdatePage;

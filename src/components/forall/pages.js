@@ -6,6 +6,9 @@ import TemporaryEmployeeCreatePage from './employeTcreate';
 import UserCreatePage from './userCreate';
 // update imports
 import ManagerUpdatePage from './managerUpdate';
+import UserUpdatePage from './userUpdate';
+import PerminentEmployeeUpdatePage from './employePupdate';
+import TemporaryEmployeeUpdatePage from './employeTupdate';
 // delete imports
 import Remove from './remove';
 // invoice
@@ -29,9 +32,9 @@ function Pages(props){
                 }
                 else if(props.operation==="update"){
                     if(props.position ==="Manager"){return <> <ManagerUpdatePage/></>}
-                    else if(props.position ==="EP"){return <> EP update page</>}
-                    else if(props.position ==="ENP"){return <> ENP update page</>}
-                    else if(props.position ==="student"){return <> student update page</>}
+                    else if(props.position ==="EP"){return <> <PerminentEmployeeUpdatePage/></>}
+                    else if(props.position ==="ENP"){return <> <TemporaryEmployeeUpdatePage/></>}
+                    else if(props.position ==="student"){return <> <UserUpdatePage/></>}
                 }
                 else if(props.operation==="delete"){
                     if(props.position ==="Manager"){return <> <Remove data={"Manager"}/></>}
