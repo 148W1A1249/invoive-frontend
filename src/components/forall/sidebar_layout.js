@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState }from "react"
 import "../assets/css/sidebar_layout.css";
 import logo from "../assets/images/logo.png";
 import { Link} from "react-router-dom";
 
 function Sidebar(props){    
+    const [show,setShow] = useState(false);
     let client_resources = [
         {
             client:"Admin",
@@ -94,8 +95,20 @@ function Sidebar(props){
             ], 
         },
     ]
+    const togglebutton = ()=>{
+        setShow(value => !value);
+        console.log(show)
+        if(show){ 
+            document.querySelector("#sidebar").style.display = "block"; 
+        }else{
+            document.querySelector("#sidebar").style.display = "none"; 
+        }
+    }
     return<>
-    <div className="sidebar">
+    <div className='menu'> 
+    <i className="fas fa-bars" onClick={togglebutton}></i>
+    </div>
+    <div className="sidebar" id='sidebar'>
         <img src={logo} alt="logo" width="100%" className="mb-5 p-auto"/>
         {/* <nav className="nav flex-column justify-content-center m-2" style={{position:"fixed"}}>             */}
         <nav className="nav flex-column justify-content-center m-2">            

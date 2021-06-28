@@ -8,6 +8,9 @@
     width: 15%;
     background-color:  white;
 }
+.menu{
+    display: none;
+}
 @media(max-width:500px){
     .sidebar{
         position: fixed;
@@ -16,7 +19,14 @@
         /* margin-left: -50%; */
         background-color:  white;
         z-index: 1;
-    }    
+    } 
+    .menu{
+        display: block;
+        position:fixed;
+        right: 0;
+        margin: 20px 40px;
+        font-size: 34px;
+    }   
 }
 @media only screen and (max-width: 1024px) and (min-width: 500px)  {
     .sidebar{
